@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 class Program
 {
@@ -16,28 +17,37 @@ class Program
         num = int.Parse(userInput);
 
         // Determine letter grade
-        if (num >= 90)
-        {
+        if (num >= 90) {
             letter = "A";
-        }
-        else if (num >= 80)
-        {
+        } 
+        else if (num >= 80) {
             letter = "B";
         }
-        else if (num >= 70)
-        {
+        else if (num >= 70) {
             letter = "C";
         }
-        else if (num >= 60)
-        {
+        else if (num >= 60) {
             letter = "D";
         }
-        else
-        {
+        else {
             letter = "F";
         }
 
-        Console.WriteLine($"Your final grade is {letter}.");
+        // Determine if to append +/- or nothing to the grade
+        string modifier = ""; 
+
+        if (num >= 60 && num < 97) {
+            if (num % 10 >= 7) {
+                modifier = "+";
+            }
+            else if (num % 10 < 3) {
+                modifier = "-";
+            }
+        }
+        else{
+        }
+
+        Console.WriteLine($"Your final grade is {letter}{modifier}.");
 
         // Pass check
 
