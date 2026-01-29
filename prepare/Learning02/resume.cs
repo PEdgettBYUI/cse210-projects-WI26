@@ -1,17 +1,25 @@
 public class Resume
 {
-    public string _name;
-    public List<Job> _jobs = new List<Job>();
+    public string _name = "Harry";
+    public List<Job> _experience = new List<Job>();
+
+    public List<Education> _education = new List<Education>();
 
 
-    public void Display()
+    public void DisplayFullResume()
     {
-        Console.WriteLine($"Name: {_name}");
-        Console.WriteLine("Jobs:");
+        Console.WriteLine($"Resume for {_name}");
 
-        foreach (Job job in _jobs)
+        foreach (Job job in _experience)
         {
-            job.Display();
+            string desc = job.GetDescription();
+            Console.WriteLine($"    {desc}");
+        }
+
+        foreach(Education educ in _education)
+        {
+            string desc = educ.GetDescription();
+            Console.WriteLine($"    {desc}");
         }
     }
 }
