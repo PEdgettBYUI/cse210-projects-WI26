@@ -63,7 +63,7 @@ class Journal
     }
 
     // Load Journal from a .txt file
-    public void LoadJOurnal(string filename)
+    public void LoadJournal(string filename)
     {
         // Takes a given {name}.txt file and breaks it down line by line into multiple entries in a list
         string[] lines = System.IO.File.ReadAllLines(filename);

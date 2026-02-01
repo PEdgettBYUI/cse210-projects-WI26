@@ -5,34 +5,72 @@ class Menu
         Console.WriteLine ("[Insert Menu Here]");
     }
 
-    public void parseUserChoice()
+    public void parseUserChoice(int choice, Entry anEntry, Journal aJournal)
     {
-        Console.WriteLine("[Insert details here]");
+//Used for Saving Files
+        string getJournalName = aJournal._journalName;
+        List<Entry> getEntries = aJournal.EntriesList;
 
-        // Variables
-
-        /* switch(choice) {
+        switch (choice)
+        {
             // Create new entry
             case 1:
+                Console.WriteLine("[CREATING New Entry...]\n");
+                // Create new Entry & add it to the Entries List
+                aJournal.CreateAndAddEntry();
+                // // Add entry to entries list
+                // aJournal.AddEntry(anEntry);
+                Console.WriteLine("   [ADDED entry to Journal]\n");
+                // aJournal.DisplayJournal(); //TESTING
+                break;
 
-            // Load and existing Journal
+            //Load an existing journal
             case 2:
+                Console.WriteLine("[LOADING Journal Entry...]\n");
 
-            // Display the entire contents of the Journal (NOTE: Make Pretty)
+                // Get filename of Journal.txt
+                string filename;
+                Console.Write("What is the filename? \n>");
+                filename = Console.ReadLine() + ".txt";
+
+                // Read from Journal.txt
+                aJournal.LoadJournal(filename);
+                break;
+
+            // Display the entire contents of the Journal in an attractive manner
             case 3:
+                // Display All Entries
+                Console.WriteLine("[DISPLAYING Journal...]\n");
+                Console.WriteLine("---------------------------------------------------");
 
-            // Save current entires in the journal to a file
+                aJournal.DisplayJournal();
+
+                Console.WriteLine("\n\n");
+                break;
+
+            // Saves the current entries in the journal to a file
             case 4:
+                Console.WriteLine("[SAVING Current Journal to file...]\n");
+                // Get filename of journal.txt
+                aJournal.nameJournal();
+                getJournalName = aJournal._journalName;
 
-            // Trigger EXIT command
-            // Automatically triggers case 4 to Save the File before Quitting
+                // write journal with new entries to .txt file
+                aJournal.SaveEntry(getJournalName, getEntries);
+                break;
+
+            // Triggers the EXIT command.
+            // If there is any entries in the current journal, saves before quitting
             case 5:
+                Console.WriteLine("[EXITING...]");
+                // Checks if file has been saved, then does same as case 4 before quitting
+                goto case 4;
 
-            // Invalid Input/Error Handling Prompt
             default:
-
+                // Invalid Input Case 
+                Console.WriteLine("[INVALID Input! Please put in a Valid Entry.]\n");
+                break;
         }
-        */
     }
 
 }
