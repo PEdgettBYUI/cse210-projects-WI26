@@ -65,7 +65,10 @@ class Journal
     // Load Journal from a .txt file
     public void LoadJournal(string filename)
     {
-        // Takes a given {name}.txt file and breaks it down line by line into multiple entries in a list
+        // IF filename.txt doesnot exist, program will crash without the following handler
+        if (System.IO.File.Exists(filename))
+        {
+            // Takes a given {name}.txt file and breaks it down line by line into multiple entries in a list
         string[] lines = System.IO.File.ReadAllLines(filename);
 
         foreach (string line in lines)
@@ -82,6 +85,12 @@ class Journal
         }
         _journalName = filename;
         Console.WriteLine("[LOAD complete!]\n");
+        }
+        else
+        {
+            Console.WriteLine($"ERROR!\nThe File: \"{filename}.txt\" Does Not Exist within the save directory.\nPlease provide an existing filename.");
+        }
+        
     }
 
     // Display all entires in the current Journal
