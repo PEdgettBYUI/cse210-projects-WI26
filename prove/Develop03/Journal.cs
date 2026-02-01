@@ -63,9 +63,56 @@ class Journal
     }
 
     // Load Journal from a .txt file
-    
-    // Display all entires in the current Journal
+    public void LoadJOurnal(string filename)
+    {
+        // Takes a given {name}.txt file and breaks it down line by line into multiple entries in a list
+        string[] lines = System.IO.File.ReadAllLines(filename);
 
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("#");
+            
+            string date = parts[0];
+            string question = parts[1];
+            string entryText = parts[2];
+
+            Entry entry = new Entry();
+            entry.EntryFromFile(date, question, entryText);
+            this.AddEntry(entry);   //NOTE: 'this' is a keyword used to refer to the class the word is in
+        }
+        _journalName = filename;
+        Console.WriteLine("[LOAD complete!]\n");
+    }
+
+    // Display all entires in the current Journal
+    public void DisplayJournal()
+    {
+        // Display filename, as reminder to the user
+        if (string.IsNullOrEmpty(_journalName))
+        {
+            Console.WriteLine("[NO NAME] Journal");
+        }
+        else
+        {
+            Console.WriteLine($"Journal: {_journalName}\n\n");
+        }
+
+        // Display every entry in the journal
+        // NOTE: Make Pretty
+        foreach (Entry item in Entries)
+        {
+            string EntryString = item.convertEntryString();
+            Console.WriteLine(EntryString.Replace('#', '\n'));
+            Console.WriteLine();
+            /* Displays all entries in the Entries List when left blank
+            OR shows the contents of a specific journal entry*/
+        }
+        Console.WriteLine($"--Total Entries: {Entries.Count}--\n");
+        
+        // Wait for User INput before continuing
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();  //NOTE: Waits for input before coninuing if BLANK
+    }
 
 
 
