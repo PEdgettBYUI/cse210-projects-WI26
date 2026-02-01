@@ -26,7 +26,7 @@ class Journal
             Console.WriteLine("Please name your Journal: ");
             _journalName = Console.ReadLine() + ".txt";
 
-            Console.WriteLine($"[JournalCreated: {_journalName}]");
+            Console.WriteLine($"[JournalCreated: {_journalName}]\n\n");
 
             // If file doesn't exist, create file/overwrite pre-existing file
             using (FileStream fs = File.Create(_journalName)) {}
@@ -69,7 +69,7 @@ class Journal
         if (System.IO.File.Exists(filename))
         {
             // Takes a given {name}.txt file and breaks it down line by line into multiple entries in a list
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        string[] lines = System.IO.File.ReadAllLines(filename);     //REMINDER: The extension(.txt) is applied automatically
 
         foreach (string line in lines)
         {
@@ -88,7 +88,7 @@ class Journal
         }
         else
         {
-            Console.WriteLine($"ERROR!\nThe File: \"{filename}.txt\" Does Not Exist within the save directory.\nPlease provide an existing filename.");
+            Console.WriteLine($"ERROR!\nThe File: \"{filename}\" Does Not Exist within the save directory.\nPlease provide an existing filename.\n\n");
         }
         
     }
