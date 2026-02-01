@@ -2,7 +2,7 @@ class Menu
 {
     public void displayMenu()
     {
-        Console.WriteLine ("[Insert Menu Here]");
+        Console.WriteLine ("      Menu\n1.Create New Entry\n2.Load Journal Entry\n3.Display Current Journal\n4.Save Current Journal\n5.Save Entry & Exit\n");
     }
 
     public void parseUserChoice(int choice, Entry anEntry, Journal aJournal)
