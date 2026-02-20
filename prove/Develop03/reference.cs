@@ -21,8 +21,28 @@ class Reference
     {
         _book = book;
         _chapter = chapter;
-        _verse = verse;     // Nullified for range of verses
+        _verse = null;     // Nullified for range of verses
         _startVerse = startVerse;
         _endVerse = endVerse;
+    }
+
+    public void ShowScriptureReference()
+    {
+        Console.Write($"{_book} {_chapter}:");
+
+        if (_verse != null)
+        {
+            Console.Write($"{_verse}");
+        }
+        else
+        {
+            Console.Write($"{_startVerse} - {_endVerse}");
+        }
+    }
+
+    public string GetScriptureReference()
+    {
+        string UH = $"{_book} {_chapter} {_verse}";
+        return UH;
     }
 }
