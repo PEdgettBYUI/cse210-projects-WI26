@@ -6,5 +6,9 @@ class Program
     {
         Console.WriteLine("Hello Learning04 World!");
         Console.WriteLine("Inheritance Learning Activity");
+        
+        Motorcycle m = new Motorcycle("Monkey", 2, "500cc");
+
+        Console.WriteLine($"{m.GetEngineType()}\n");
     }
 }
