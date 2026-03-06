@@ -66,4 +66,59 @@ public Scripture(string name, int chapter, int verse, string text)
 
     }
 
+    public int HowManyVisible()
+    {
+        int visible_count = 0;
+
+        foreach (Word word in _words)
+        {
+            if (word.GetHidden() == false)
+            {
+                visible_count++;
+            }
+        }
+
+        return visible_count;
+    }
+
+    public bool HideSomeWords()
+    {
+        int current_visible = HowManyVisible();
+
+        if (current_visible >= 5)
+        {
+            List<Word> visible_only = new List<Word>();
+
+            foreach (Word word in _words)
+            {
+                if (word.GetHidden() == false)
+                {
+                    visible_only.Add(word);
+                }
+            }
+
+            Random random = new Random();   // RNG
+            for (int i = 0; i < 5; i++)
+            {
+                // From 0 to length of visible_only
+                int toHide = random.Next(0, visible_only.Count);
+                visible_only[toHide].Hide();
+            }
+
+            return false;   // Keep program going
+        }
+        else if (current_visible > 0)
+        {
+            foreach (Word word in _words)
+            {
+                word.Hide();
+            }
+            return false;   // Keep program going
+        }
+        else
+        {
+            // End of Program Call here
+            return true;
+        }
+    }
 }

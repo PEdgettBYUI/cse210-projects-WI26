@@ -36,6 +36,7 @@ class Program
         Debug.Assert(selectedScripture < scriptures.Count);
 
 
+
         string input = "a";
         bool finished = false;
         while(input != "q" && !finished)
@@ -44,7 +45,7 @@ class Program
             Console.WriteLine("Enter 'q' to quit, press enter to remove words: ");
 
             scriptures[selectedScripture].ShowScripture();
-            finished = scriptures[selectedScripture].HideSome_words();
+            finished = scriptures[selectedScripture].HideSomeWords();
             if(!finished)
             {
                 input = Console.ReadLine();

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 class Word
 {
     private string _word;
-    bool _hidden = false;
+    private bool _hidden = false;
 
 
     // Constructor
@@ -19,14 +19,19 @@ class Word
         _word = Console.ReadLine();
     }
     
+    public bool GetHidden()
+    {
+        return _hidden;
+    }
+
     public void Hide()
     {
         if (_hidden == false) {
             _hidden = true;
         }
-        else {
-            _hidden = false;
-        }
+        // else {
+        //     _hidden = false;
+        // }
     }
 
     public void DisplayWord ()
