@@ -40,7 +40,8 @@ class Activity
     public void ObtainDurationFromUser()
     {
         Console.Write("How long do you want your session to be? ");
-        _duration = int.Parse(Console.ReadLine());
+        
+        
     }
 
     public void SetEndTime()
@@ -57,8 +58,8 @@ class Activity
     public void DominoAnimation()
     {
         // Lasts about ~7s @ sleepTime = 200, count = 6
-        int sleepTime = 250;
-        int count = 6;
+        int sleepTime = 200;
+        int count = 4;
 
         // Simple "Domino" Loading Animation 2 dominos per count
         while (count > 0)
@@ -69,9 +70,12 @@ class Activity
             Console.Write("/");
             Thread.Sleep(sleepTime);
             Console.Write("\b");
-            Console.Write("_");
+            Console.Write("--");
             Thread.Sleep(sleepTime);
-            Console.Write("\\");
+            Console.Write("\b\b");
+            Console.Write("_");
+            Thread.Sleep(sleepTime*2);
+            Console.Write(" \\");
             Thread.Sleep(sleepTime);
             Console.Write("\b");
             Console.Write("|");
@@ -80,7 +84,11 @@ class Activity
             Console.Write("/");
             Thread.Sleep(sleepTime);
             Console.Write("\b");
-            Console.Write("_");
+            Console.Write("--");
+            Thread.Sleep(sleepTime);
+            Console.Write("\b\b");
+            Console.Write("_ ");
+            Thread.Sleep(sleepTime*2);
             count--;
         }
     }
